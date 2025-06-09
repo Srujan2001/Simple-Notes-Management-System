@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="icon" type="jpg"
+        href="https://static.vecteezy.com/system/resources/previews/002/820/605/non_2x/branded-notepad-rgb-color-icon-making-business-notes-gift-for-employees-staff-members-isolated-illustration-custom-notebook-with-printed-company-logo-and-slogan-simple-filled-line-drawing-vector.jpg">
+    <style>
+        body {
+            background-color: #00ced1;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        margin: 5px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <center>{{ message }}</center>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<body>
+    <div class="container">
+        <h2>Enter OTP</h2>
+        <form method="POST">
+            <input type="text" name="userotp" placeholder="Enter OTP" required>
+            <button>submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% extends 'dashboard.html' %}
+{% block addcss %}
+<!-- No additional CSS needed for Bootstrap styling -->
+  <link rel="icon" type="jpg" href="https://static.vecteezy.com/system/resources/previews/002/820/605/non_2x/branded-notepad-rgb-color-icon-making-business-notes-gift-for-employees-staff-members-isolated-illustration-custom-notebook-with-printed-company-logo-and-slogan-simple-filled-line-drawing-vector.jpg">
+{% endblock %}
+{% block content %}
+<div class="min-vh-100" style="background-color: #00ced1;">
+  <div class="container py-5">
+    <h1 class="mb-4 text-center text-white">View All Notes</h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered align-middle text-center bg-white">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">Notes ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in allnotesdata %}
+          <tr>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>
+              <a href="{{ url_for('viewnotes', nid=i[0]) }}" class="btn btn-sm btn-info me-1">View</a>
+              <a href="{{ url_for('updatenotes', nid=i[0]) }}" class="btn btn-sm btn-warning me-1">Update</a>
+              <a href="{{ url_for('deletenotes', nid=i[0]) }}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

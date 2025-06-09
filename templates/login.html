@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOGIN DETAILS</title>
+  <link rel="icon" type="image/jpg" href="https://static.vecteezy.com/system/resources/previews/002/820/605/non_2x/branded-notepad-rgb-color-icon-making-business-notes-gift-for-employees-staff-members-isolated-illustration-custom-notebook-with-printed-company-logo-and-slogan-simple-filled-line-drawing-vector.jpg" />
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #00ced1;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+
+    .card {
+      max-width: 400px;
+      width: 100%;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 10;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .square {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      animation: floatSquare 20s linear infinite;
+    }
+
+    .square:nth-child(1) { top: 90%; left: 10%; animation-delay: 0s; }
+    .square:nth-child(2) { top: 100%; left: 25%; animation-delay: 5s; }
+    .square:nth-child(3) { top: 100%; left: 45%; animation-delay: 3s; }
+    .square:nth-child(4) { top: 95%; left: 65%; animation-delay: 7s; }
+    .square:nth-child(5) { top: 100%; left: 85%; animation-delay: 2s; }
+
+    @keyframes floatSquare {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Floating squares -->
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+
+  <div class="card bg-white">
+    <h2 class="text-center mb-4">LOGIN DETAILS</h2>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-danger text-center py-2">
+      {% for message in messages %}
+        <div>{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <form method="post">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email ID:</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password:</label>
+    <div class="input-group">
+      <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required />
+    </div>
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" id="togglePassword" />
+      <label class="form-check-label" for="togglePassword">Show Password</label>
+    </div>
+    <!-- 👇 Forgot Password link -->
+    <div class="mt-2 text-end">
+      <a href="{{ url_for('forgotpassword') }}" class="text-decoration-none">Forgot Password?</a>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+</form>
+
+
+  <!-- Toggle Password Script -->
+  <script>
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+
+    togglePassword.addEventListener('change', function () {
+      passwordInput.type = this.checked ? 'text' : 'password';
+    });
+  </script>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

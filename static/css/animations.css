@@ -1,0 +1,42 @@
+/* animations.css */
+
+.square {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  animation: floatSquare 20s linear infinite;
+  z-index: 1;
+}
+
+.square:nth-child(1) { top: 90%; left: 10%; animation-delay: 0s; }
+.square:nth-child(2) { top: 100%; left: 25%; animation-delay: 5s; }
+.square:nth-child(3) { top: 100%; left: 45%; animation-delay: 3s; }
+.square:nth-child(4) { top: 95%; left: 65%; animation-delay: 7s; }
+.square:nth-child(5) { top: 100%; left: 85%; animation-delay: 2s; }
+
+@keyframes floatSquare {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}

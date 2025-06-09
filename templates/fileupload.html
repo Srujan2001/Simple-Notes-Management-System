@@ -1,0 +1,33 @@
+{% extends 'dashboard.html' %}
+{% block addcss %}
+  <link rel="icon" type="image/jpg" href="https://static.vecteezy.com/system/resources/previews/002/820/605/non_2x/branded-notepad-rgb-color-icon-making-business-notes-gift-for-employees-staff-members-isolated-illustration-custom-notebook-with-printed-company-logo-and-slogan-simple-filled-line-drawing-vector.jpg">
+{% endblock %}
+
+{% block content %}
+<div class="min-vh-100" style="background-color: #00ced1;">
+  <div class="container py-5">
+    <h1 class="mb-4 text-center text-white">Upload File</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-body">
+            <form  method="POST" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="file" class="form-label">Select File</label>
+                <input type="file" class="form-control" id="file" name="file" required>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success">Upload</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

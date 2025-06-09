@@ -1,0 +1,33 @@
+{% extends 'dashboard.html' %}
+
+{% block addcss %}
+<!-- No external CSS required -->
+ <link rel="icon" type="jpg" href="https://static.vecteezy.com/system/resources/previews/002/820/605/non_2x/branded-notepad-rgb-color-icon-making-business-notes-gift-for-employees-staff-members-isolated-illustration-custom-notebook-with-printed-company-logo-and-slogan-simple-filled-line-drawing-vector.jpg">
+{% endblock %}
+
+{% block content %}
+<div class="min-vh-100 d-flex justify-content-center align-items-center" style="background-color: #00ced1;">
+  <div class="container py-5">
+    <div class="card shadow border-0 bg-light">
+      <div class="card-header bg-primary text-white text-center">
+        <h2 class="mb-0">Update Note</h2>
+      </div>
+      <div class="card-body">
+        <form method="post">
+          <div class="mb-3">
+            <label for="title" class="form-label fw-semibold">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{notesdata[1]}}" placeholder="Enter note title" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label fw-semibold">Description:</label>
+            <textarea id="description" class="form-control" name="description" rows="6" placeholder="Enter note description" required>{{notesdata[2]}}</textarea>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100">Update Note</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

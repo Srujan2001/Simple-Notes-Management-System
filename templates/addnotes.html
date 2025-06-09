@@ -1,0 +1,41 @@
+{% extends 'dashboard.html' %}
+
+{% block addcss %}
+  <link rel="icon" type="jpg" href="https://static.vecteezy.com/system/resources/previews/002/820/605/non_2x/branded-notepad-rgb-color-icon-making-business-notes-gift-for-employees-staff-members-isolated-illustration-custom-notebook-with-printed-company-logo-and-slogan-simple-filled-line-drawing-vector.jpg">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Floating Squares -->
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+
+<div class="min-vh-100 d-flex justify-content-center align-items-center" style="background: linear-gradient(135deg, #00ced1, #6a5acd); position: relative; z-index: 2;">
+  <div class="container py-5 fade-in">
+    <div class="card shadow border-0 bg-light">
+      <div class="card-header bg-primary text-white text-center">
+        <h2 class="mb-0">Add Note</h2>
+      </div>
+      
+      <div class="card-body">
+        <form method="post">
+          <div class="mb-3">
+            <label for="title" class="form-label fw-semibold">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter note title" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label fw-semibold">Description:</label>
+            <textarea id="description" class="form-control" name="description" rows="6" placeholder="Enter note description" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
