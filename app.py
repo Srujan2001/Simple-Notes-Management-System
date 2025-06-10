@@ -297,7 +297,6 @@ def search():
 
 @app.route('/forgotpassword',methods=('GET','POST'))
 def forgotpassword():
-    if session.get('user'):
         if request.method=='POST':
             f_email=request.form['email']
             cursor=mydb.cursor(buffered=True)
@@ -314,13 +313,10 @@ def forgotpassword():
                 return redirect(url_for('register'))
                 
         return render_template('forgot.html')
-    else:
-        flash('Please login')
-        return redirect(url_for('login'))
+
 
 @app.route('/newpassword/<data>',methods=['GET','POST'])
 def newpassword(data):
-    if session.get('user'):
         if request.method=='POST':
             npassword=request.form['new_password']
             cpassword=request.form['confirm_password']
@@ -335,9 +331,7 @@ def newpassword(data):
                 flash('Mismatched password Please check')
                 return redirect(url_for('newpassword',data=data))
         return render_template('newpassword.html')
-    else:
-        flash('Please login')
-        return redirect(url_for('login'))
+
 
 
 

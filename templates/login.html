@@ -108,11 +108,14 @@
     </div>
     <!-- 👇 Forgot Password link -->
     <div class="mt-2 text-end">
-      <a href="{{ url_for('forgotpassword') }}" class="text-decoration-none">Forgot Password?</a>
+      <a href="{{ url_for('forgotpassword')}}" class="text-decoration-none">Forgot Password?</a>
     </div>
   </div>
-
   <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+  <div class="text-center mt-3">
+    <a href="{{ url_for('register') }}" class="text-decoration-none">Don't have an account? Register here</a>
+  </div>
+  
 </form>
 
 
