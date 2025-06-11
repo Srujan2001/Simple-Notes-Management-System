@@ -1,0 +1,47 @@
+mysql> use snmp;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_snmp |
++----------------+
+| filedata       |
+| notes          |
+| users          |
++----------------+
+3 rows in set (0.01 sec)
+
+mysql> desc users;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| username | varchar(50) | NO   |     | NULL    |       |
+| email    | varchar(50) | NO   | PRI | NULL    |       |
+| password | varchar(50) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> desc notes;
++-------------+--------------+------+-----+-------------------+-------------------+
+| Field       | Type         | Null | Key | Default           | Extra             |
++-------------+--------------+------+-----+-------------------+-------------------+
+| nid         | int          | NO   | PRI | NULL              | auto_increment    |
+| title       | varchar(225) | YES  |     | NULL              |                   |
+| description | longtext     | YES  |     | NULL              |                   |
+| created_at  | datetime     | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| added_by    | varchar(50)  | YES  | MUL | NULL              |                   |
++-------------+--------------+------+-----+-------------------+-------------------+
+5 rows in set (0.01 sec)
+
+mysql> desc filedata;
++------------+--------------+------+-----+-------------------+-------------------+
+| Field      | Type         | Null | Key | Default           | Extra             |
++------------+--------------+------+-----+-------------------+-------------------+
+| fid        | int unsigned | NO   | PRI | NULL              | auto_increment    |
+| filename   | varchar(20)  | NO   | UNI | NULL              |                   |
+| fdata      | longblob     | YES  |     | NULL              |                   |
+| created_at | datetime     | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| added_by   | varchar(50)  | YES  | MUL | NULL              |                   |
++------------+--------------+------+-----+-------------------+-------------------+
+5 rows in set (0.01 sec)
+
+mysql>

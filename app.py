@@ -50,23 +50,20 @@ def register():
 
 @app.route('/otpverify/<user_data>',methods=['GET','POST'])
 def otpverify(user_data):
-    if session.get('user'):
-        if request.method=='POST':
-            userotp=request.form['userotp']
-            duser_data=detoken(data=user_data)
-            if duser_data['otp']==userotp:
-                cursor=mydb.cursor()
-                cursor.execute('insert into users(username,password,email)values(%s,%s,%s)',[duser_data['user_name'],duser_data['user_password'],duser_data['user_email']])
-                mydb.commit()
-                cursor.close()
-                flash('Details Registered Successfully.')
-                return redirect(url_for('login'))
-            else:
-                flash('Invalid otp')
-        return render_template('otp.html')
-    else:
-        flash('Please login')
-        return redirect(url_for('login'))
+    if request.method=='POST':
+        userotp=request.form['userotp']
+        duser_data=detoken(data=user_data)
+        if duser_data['otp']==userotp:
+            cursor=mydb.cursor()
+            cursor.execute('insert into users(username,password,email)values(%s,%s,%s)',[duser_data['user_name'],duser_data['user_password'],duser_data['user_email']])
+            mydb.commit()
+            cursor.close()
+            flash('Details Registered Successfully.')
+            return redirect(url_for('login'))
+        else:
+            flash('Invalid otp')
+    return render_template('otp.html')
+
 
 
 @app.route('/login',methods=['GET','POST'])
